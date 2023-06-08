@@ -68,3 +68,9 @@ RegisterNUICallback('close', function(data)
     SendNUIMessage({open = false})
     uiOpend = false
 end)
+
+RegisterNUICallback('update', function(data)
+    ESX.TriggerServerCallback('ug_garage:getOwnedVehicles', function(vehicles)
+        SendNUIMessage({open = true, data = vehicles})
+    end)
+end)
